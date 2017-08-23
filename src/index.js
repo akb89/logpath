@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
-const logger = require('./logger');
+const debug = require('debug')('logpath');
 
 function getAppName() {
   const packageFile = path.join(process.cwd(), 'package.json');
@@ -17,7 +17,7 @@ function createDirIfNotExists(...params) {
       fs.mkdirSync(dirPath);
     }
   } catch (err) {
-    logger.warn(err.message);
+    debug(err.message);
   }
   return dirPath;
 }
@@ -49,7 +49,7 @@ function getPlatformLogDirPath(appName) {
 }
 
 const logdirpath = {
-  getLogDirPath: () => {
+  createAndGetLogFilePath: () => {
     let appName;
     let logDirPath;
     try {
@@ -60,14 +60,15 @@ const logdirpath = {
         logDirPath = getDefaultLogDirPath();
       }
     } catch (err) {
-      logger.warn('Could not retrieve app name from package.json');
-      logger.debug(err.message);
+      debug('Could not retrieve app name from package.json');
+      debug(err.message);
       logDirPath = getDefaultLogDirPath();
     }
     if (!logDirPath) {
       throw new Error('Could not create logs directory');
     }
-    logger.info(`Saving logs to: ${logDirPath}`);
+    debug(`Saving logs to: ${logDirPath}`);
+    return logDirPath;
   },
 };
 
