@@ -1,6 +1,6 @@
 {
   "name": "logpath",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "A simple module to get a custom node.js app log dir path across platforms",
   "keywords": [
     "Node.JS",
@@ -38,9 +38,10 @@
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.1.0",
-    "mocha": "^3.4.2"
+    "mocha": "^3.4.2",
+    "supports-color": "^4.2.1"
   },
   "dependencies": {
-    "winston": "^2.3.1"
+    "debug": "^3.0.0"
   }
 }
