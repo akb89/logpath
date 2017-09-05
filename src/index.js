@@ -16,10 +16,11 @@ function createDirIfNotExists(...params) {
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(dirPath);
     }
+    return dirPath;
   } catch (err) {
     debug(err.message);
   }
-  return dirPath;
+  return false;
 }
 
 function getDefaultLogDirPath() {
@@ -37,10 +38,12 @@ function getPlatformLogDirPath(appName) {
       || createDirIfNotExists(homeDir, '.local', 'share', appName);
     }
     case 'darwin': {
-      return createDirIfNotExists(homeDir, 'Library', 'Logs', appName) || createDirIfNotExists(homeDir, 'Library', 'Application Support', appName);
+      return createDirIfNotExists(homeDir, 'Library', 'Logs', appName)
+      || createDirIfNotExists(homeDir, 'Library', 'Application Support', appName);
     }
     case 'win32': {
-      return createDirIfNotExists(process.env.APPDATA, appName) || createDirIfNotExists(homeDir, 'AppData', 'Roaming', appName);
+      return createDirIfNotExists(process.env.APPDATA, appName)
+      || createDirIfNotExists(homeDir, 'AppData', 'Roaming', appName);
     }
     default: {
       throw new Error(`Unsupported platform: '${process.platform}'`);
