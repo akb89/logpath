@@ -15,7 +15,7 @@ $ npm install --save logpath
 ```
 const logpath = require('logpath');
 
-const logDirPath = logpath.createAndGetLogFilePath();
+const logDirPath = logpath.createAndGetLogDirPath();
 ```
 
 logpath creates directory if not found and tries to return log directory paths in the following order:

@@ -1,6 +1,6 @@
 {
   "name": "logpath",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "A simple module to get a custom node.js app log dir path across platforms",
   "keywords": [
     "Node.JS",
