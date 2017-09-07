@@ -52,7 +52,7 @@ function getPlatformLogDirPath(appName) {
 }
 
 const logdirpath = {
-  createAndGetLogFilePath: () => {
+  createAndGetLogDirPath: () => {
     let appName;
     let logDirPath;
     try {
